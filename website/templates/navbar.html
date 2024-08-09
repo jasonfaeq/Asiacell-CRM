@@ -1,29 +1,62 @@
 <!doctype html>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}" style="color: red; font-weight: bold;">Asiacell</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'add_record' %}">Add</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-        </li>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% else %}
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'home' %}">Login</a>
-        </li>        
-        {% endif %}
-        
-      </ul>
-      
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    .navbar-brand {
+      color: red !important;
+      font-weight: bold;
+    }
+    .navbar-brand:hover {
+      color: white !important;
+    }
+    .nav-link {
+      color: white !important;
+    }
+    .nav-link:hover {
+      color: #ddd !important;
+    }
+    .btn-custom {
+      background-color: #342c2b;
+      color: white !important;
+      border-radius: 20px;
+      padding: 5px 15px;
+    }
+    .btn-custom:hover {
+      background-color: #400f2ac4;
+    }
+    .btn-uniform {
+      width: 150px; /* Set a fixed width for all buttons */
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <div class="d-flex justify-content-between w-100">
+        <div class="d-flex">
+          {% if user.is_authenticated %}
+          <a class="nav-link btn btn-custom btn-uniform me-2" href="{% url 'add_record' %}">Add Customer</a>
+          <a class="nav-link btn btn-custom btn-uniform" href="{% url 'export' %}">Export CSV</a>
+          {% endif %}
+        </div>
+        <a class="navbar-brand mx-auto" href="{% url 'home' %}">Asiacell</a>
+        <div class="d-flex">
+          {% if user.is_authenticated %}
+          <a class="nav-link btn btn-custom btn-uniform me-2" href="{% url 'about' %}">About</a>
+          <a class="nav-link btn btn-custom btn-uniform" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a class="nav-link btn btn-custom btn-uniform me-2" href="{% url 'about' %}">About</a>
+          <a class="nav-link btn btn-custom btn-uniform" href="{% url 'home' %}">Login</a>
+          {% endif %}
+        </div>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</body>

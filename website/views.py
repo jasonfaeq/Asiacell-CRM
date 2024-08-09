@@ -1,6 +1,8 @@
+import csv
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.http import HttpResponse
 from .models import Record
 from .forms import AddRecordForm
 
@@ -74,3 +76,24 @@ def update_record(request, pk):
     else:
         messages.error(request, "You need to login first.")
         return redirect('home')
+    
+# Export record to CSV
+def export_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=records.csv'
+
+    writer = csv.writer(response)
+    # Write the header row
+    writer.writerow(['First Name', 'Last Name', 'Email', 'Phone', 'Address', 'City', 'Created At'])
+
+    # Write data rows
+    records = Record.objects.all().values_list('first_name', 'last_name', 'email', 'phone', 'address', 'city', 'created_at')
+    for record in records:
+        writer.writerow(record)
+
+    return response
+
+
+def about(request):
+    return render(request, 'about.html')  # Add this function
