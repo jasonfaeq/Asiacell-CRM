@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +14,7 @@ SECRET_KEY = 'django-insecure-3)sgs-*5ph7itcyeew+qvi&g0q8=kwmwqbaym0@7h49pm6ldmn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['myCRMDjangoApplication.azurewebsites.net']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -65,13 +66,21 @@ WSGI_APPLICATION = 'dcrm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lvlupco',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
+        'NAME': 'lvlupco',  # Replace with your database name
+        'USER': 'JasonFaeq',
+        'PASSWORD': '07702821820J!',
+        'HOST': 'asiacellcrm2.mysql.database.azure.com',
         'PORT': '3306',
+        'OPTIONS': {
+            'ssl': {
+                'ca': None,  # Remove or set to None
+                'cert': None,  # Remove or set to None
+                'key': None,  # Remove or set to None
+            },
+        },
     }
 }
+
 
 
 # Password validation
@@ -109,6 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
