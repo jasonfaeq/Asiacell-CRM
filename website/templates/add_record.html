@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Add Record</h1>
+
+<form method="post" action="{% url 'add_record' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-secondary">Add Record</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary mx-2">Back</a>
+</form>
+{% endblock %}
