@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-3)sgs-*5ph7itcyeew+qvi&g0q8=kwmwqbaym0@7h49pm6ldmn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'asiacellcrm-ajfwavgjc6b9gmgq.eastus-01.azurewebsites.net']
 
 
 # Application definition
