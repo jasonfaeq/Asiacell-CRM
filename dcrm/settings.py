@@ -16,6 +16,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'asiacellcrm-ajfwavgjc6b9gmgq.eastus-01.azurewebsites.net']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://127.0.0.1',
+    'http://localhost',
+    'https://asiacellcrm-ajfwavgjc6b9gmgq.eastus-01.azurewebsites.net',
+]
 
 # Application definition
 
