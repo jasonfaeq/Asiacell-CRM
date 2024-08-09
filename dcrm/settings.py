@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-3)sgs-*5ph7itcyeew+qvi&g0q8=kwmwqbaym0@7h49pm6ldmn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['myCRMDjangoApplication.azurewebsites.net']
 
 
 # Application definition
