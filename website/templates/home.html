@@ -78,5 +78,16 @@
     </div>
     {% endif %}
 </div>
+{% block footer %}
+<footer class="bg-dark text-white  py-3 mt-5">
+    <div class="container">
+        <p class="mb-0">&copy; <span id="currentYear"></span> Jason Faeq. All rights reserved.</p>
+    </div>
+</footer>
 
+<script>
+    // Set the current year in the footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
+{% endblock %}
 {% endblock %}
