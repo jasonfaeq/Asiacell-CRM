@@ -25,7 +25,7 @@ This app, built using Django, has its database hosted on a MySQL Server through 
 
 ## Usage
 
-1. Visit the website hosting the app here.
+1. Visit the website hosting the app [here](https://asiacellcrm-ajfwavgjc6b9gmgq.eastus-01.azurewebsites.net/).
 2. Log in using the following credentials:
    
     ```bash
