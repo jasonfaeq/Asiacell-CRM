@@ -5,25 +5,38 @@ from django.contrib import messages
 from django.http import HttpResponse
 from .models import Record
 from .forms import AddRecordForm
+from django.db.models import Q
 
 
-# Define the home view
 def home(request): 
-    records = Record.objects.all() # Get all records from the database
+    # Initialize records with all records
+    records = Record.objects.all()
     
-    # POST request
+    # Handle search query
+    query = request.GET.get('q')
+    if query:
+        records = records.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(email__icontains=query) |
+            Q(phone__icontains=query) |
+            Q(address__icontains=query) |
+            Q(city__icontains=query)
+        )
+
+    # Handle login
     if request.method == "POST":
         username = request.POST["username"]
-        password = request.POST["password"] 
-        user = authenticate(request, username=username, password=password) # Authenticate the user with the given username and password
-        if user is not None: 
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
             login(request, user)
             messages.success(request, "You have successfully logged in!")
             return redirect('home')
         else:
             messages.error(request, "Invalid username or password.")
 
-    return render(request, "home.html", {'records': records}) # Render the home.html template with the records
+    return render(request, "home.html", {'records': records})
 
 def logout_user(request):
     logout(request)
